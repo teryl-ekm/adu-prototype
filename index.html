@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADU Plan Review — OBC Canned Comments</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --suggested-bg: #f0f9ff;
+  --suggested-border: #0ea5e9;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.5;
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+.header {
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-title { font-size: 16px; font-weight: 600; color: var(--gray-900); }
+.header-sub { font-size: 12px; color: var(--gray-500); }
+
+.steps { display: flex; align-items: center; gap: 6px; }
+.step {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--gray-400);
+  cursor: default; padding: 4px 8px; border-radius: 6px;
+}
+.step.active { color: var(--primary); font-weight: 600; }
+.step.done { color: var(--success); cursor: pointer; }
+.step.done:hover { background: var(--gray-100); }
+.step-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gray-200); color: var(--gray-500);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+}
+.step.active .step-num { background: var(--primary); color: white; }
+.step.done .step-num { background: var(--success); color: white; }
+.step-divider { color: var(--gray-300); font-size: 14px; }
+
+.main { max-width: 1000px; margin: 0 auto; padding: 32px 24px 64px; }
+
+.page-title { font-size: 22px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.page-subtitle { font-size: 14px; color: var(--gray-500); margin-bottom: 24px; }
+
+.card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-header { padding: 18px 24px; border-bottom: 1px solid var(--gray-100); }
+.card-title { font-size: 16px; font-weight: 600; color: var(--gray-900); }
+.card-body { padding: 22px 24px; }
+
+.form-group { margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+.form-label {
+  display: block; font-size: 13px; font-weight: 500;
+  color: var(--gray-700); margin-bottom: 8px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+
+.radio-group { display: flex; flex-direction: column; gap: 6px; }
+.radio-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.radio-row .radio-option { flex: 1; min-width: 80px; justify-content: center; }
+.radio-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  cursor: pointer; transition: all 0.15s;
+  font-size: 14px; color: var(--gray-700);
+  background: white;
+}
+.radio-option:hover { border-color: var(--primary); background: var(--primary-light); }
+.radio-option.selected {
+  border-color: var(--primary); background: var(--primary-light);
+  color: var(--primary-dark); font-weight: 500;
+}
+.radio-option input { accent-color: var(--primary); margin: 0; }
+
+input[type="text"], select, textarea {
+  width: 100%; padding: 9px 12px;
+  border: 1px solid var(--gray-300); border-radius: var(--radius);
+  font-size: 14px; color: var(--gray-900); background: white;
+  font-family: inherit;
+}
+input[type="text"]:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center;
+  padding-right: 32px; cursor: pointer;
+}
+textarea { resize: vertical; min-height: 56px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 500;
+  cursor: pointer; border: none;
+  transition: all 0.15s; font-family: inherit;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+.btn-secondary:hover { background: var(--gray-50); }
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: #15803d; }
+.btn-lg { padding: 12px 26px; font-size: 15px; }
+.btn-sm { padding: 6px 14px; font-size: 13px; }
+.btn-actions { display: flex; gap: 12px; margin-top: 24px; align-items: center; flex-wrap: wrap; }
+
+.checklist-toolbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gray-100);
+  background: var(--gray-50);
+  border-radius: var(--radius) var(--radius) 0 0;
+  flex-wrap: wrap;
+}
+.tabs {
+  display: flex; gap: 2px;
+  background: var(--gray-100); padding: 3px;
+  border-radius: 7px;
+}
+.tab {
+  padding: 6px 14px; border-radius: 5px;
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; color: var(--gray-600);
+  border: none; background: transparent;
+  transition: all 0.15s; font-family: inherit;
+}
+.tab.active { background: white; color: var(--primary); box-shadow: var(--shadow); }
+.toolbar-spacer { flex: 1; }
+
+.section { border-bottom: 1px solid var(--gray-100); }
+.section:last-child { border-bottom: none; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 20px; cursor: pointer; user-select: none;
+  transition: background 0.1s;
+}
+.section-header:hover { background: var(--gray-50); }
+.section-chevron {
+  color: var(--gray-400); transition: transform 0.2s;
+  font-size: 11px; width: 12px; display: inline-block;
+}
+.section-chevron.open { transform: rotate(90deg); }
+.section-name { font-size: 14px; font-weight: 600; color: var(--gray-800); flex: 1; }
+.section-count { font-size: 12px; color: var(--gray-400); }
+.section-selected-count {
+  font-size: 12px; font-weight: 600; color: var(--primary);
+  background: var(--primary-light); padding: 2px 8px; border-radius: 100px;
+}
+.section-body { display: none; }
+.section-body.open { display: block; }
+
+.checklist-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 20px; border-top: 1px solid var(--gray-50);
+  transition: background 0.1s;
+}
+.checklist-item:hover { background: var(--gray-50); }
+.checklist-item.suggested {
+  background: var(--suggested-bg);
+  border-left: 3px solid var(--suggested-border);
+  padding-left: 17px;
+}
+.checklist-item.suggested:hover { background: #e0f2fe; }
+.checklist-item.dimmed { opacity: 0.55; }
+.item-checkbox {
+  margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0;
+  accent-color: var(--primary); cursor: pointer;
+}
+.item-content { flex: 1; min-width: 0; }
+.item-meta {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 4px; flex-wrap: wrap;
+}
+.item-ref {
+  font-size: 12px; font-weight: 600; color: var(--gray-700);
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  background: var(--gray-100); padding: 2px 7px; border-radius: 4px;
+}
+.badge {
+  font-size: 11px; font-weight: 500;
+  padding: 2px 8px; border-radius: 100px;
+  white-space: nowrap;
+}
+.badge-major { background: #fee2e2; color: #991b1b; }
+.badge-minor { background: #fef3c7; color: #92400e; }
+.badge-info { background: #dbeafe; color: #1e40af; }
+.badge-coordination { background: #f3e8ff; color: #6b21a8; }
+.badge-suggested { background: #cffafe; color: #155e75; font-weight: 600; }
+.applies-tag { font-size: 11px; color: var(--gray-500); }
+.item-comment { font-size: 14px; color: var(--gray-700); line-height: 1.5; }
+.item-override { margin-top: 8px; }
+.item-override-label { font-size: 11px; color: var(--gray-400); margin-bottom: 4px; }
+.item-override textarea { font-size: 13px; min-height: 44px; padding: 7px 10px; }
+
+.suggested-notice {
+  background: #f0f9ff; border: 1px solid #bae6fd;
+  border-radius: 6px; padding: 10px 16px;
+  font-size: 13px; color: #0369a1;
+  margin: 12px 20px; display: flex; align-items: center; gap: 8px;
+}
+
+.project-bar {
+  background: white; border: 1px solid var(--gray-200);
+  border-radius: var(--radius); padding: 14px 20px;
+  margin-bottom: 20px; display: flex;
+  gap: 24px; font-size: 13px; flex-wrap: wrap;
+}
+.project-bar-item { display: flex; flex-direction: column; gap: 2px; }
+.project-bar-label {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--gray-400);
+}
+.project-bar-value { font-weight: 500; color: var(--gray-700); }
+
+.output-list { counter-reset: comment-counter; }
+.output-item {
+  display: flex; gap: 16px;
+  padding: 12px 0; border-bottom: 1px solid var(--gray-100);
+}
+.output-item:last-child { border-bottom: none; }
+.output-num {
+  font-size: 13px; font-weight: 700; color: var(--gray-400);
+  min-width: 28px; padding-top: 1px;
+}
+.output-text { font-size: 14px; color: var(--gray-800); line-height: 1.6; flex: 1; }
+
+.copy-area {
+  background: var(--gray-50); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); padding: 18px 20px;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 13px; line-height: 1.7; color: var(--gray-800);
+  white-space: pre-wrap; word-wrap: break-word;
+  max-height: 400px; overflow-y: auto; margin-bottom: 14px;
+}
+
+.empty-state { text-align: center; padding: 48px 24px; color: var(--gray-400); }
+.empty-state-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state-title { font-size: 16px; font-weight: 500; color: var(--gray-500); margin-bottom: 6px; }
+
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--gray-900); color: white;
+  padding: 12px 20px; border-radius: var(--radius);
+  font-size: 14px; z-index: 1000;
+  opacity: 0; transform: translateY(8px);
+  transition: all 0.25s; pointer-events: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+.section-actions {
+  display: flex; gap: 6px; margin-left: auto;
+}
+.section-actions .btn-sm { padding: 4px 10px; font-size: 12px; }
+
+.fixed-footer {
+  position: sticky; bottom: 0;
+  background: white; border-top: 1px solid var(--gray-200);
+  padding: 12px 20px; margin: 24px -24px -64px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; box-shadow: 0 -4px 12px rgba(0,0,0,0.04);
+}
+@media (max-width: 640px) {
+  .main { padding-bottom: 100px; }
+}
+
+.helper-text { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <div class="header-title">ADU Plan Review</div>
+      <div class="header-sub">Ontario Building Code · Canned Comments Tool</div>
+    </div>
+    <nav class="steps" id="stepsNav">
+      <div class="step active" data-step="1" onclick="goToStep(1)">
+        <div class="step-num">1</div><span>Setup</span>
+      </div>
+      <span class="step-divider">›</span>
+      <div class="step" data-step="2" onclick="goToStep(2)">
+        <div class="step-num">2</div><span>Checklist</span>
+      </div>
+      <span class="step-divider">›</span>
+      <div class="step" data-step="3" onclick="goToStep(3)">
+        <div class="step-num">3</div><span>Output</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="toast" id="toast"></div>
+
+<main class="main">
+
+  <!-- ================= STEP 1: SETUP ================= -->
+  <div id="step1">
+    <h1 class="page-title">Tell us about your project</h1>
+    <p class="page-subtitle">Your answers will highlight the most relevant code sections so you can review them first.</p>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="card-header"><div class="card-title">Project Information</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Project name / address</label>
+            <input type="text" id="projName" placeholder="e.g. 123 Main Street">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Permit number</label>
+            <input type="text" id="projPermit" placeholder="e.g. B-2026-0001">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Plans examiner</label>
+            <input type="text" id="projExaminer" placeholder="Examiner name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Review date</label>
+            <input type="text" id="projDate" placeholder="e.g. April 24, 2026">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="card-header"><div class="card-title">Project Type</div></div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label">What kind of project is this?</label>
+          <div class="radio-group" id="projectTypeGroup">
+            <label class="radio-option" onclick="selectRadio('projectType','basement',this)">
+              <input type="radio" name="projectType" value="basement"> Basement apartment
+            </label>
+            <label class="radio-option" onclick="selectRadio('projectType','detached',this)">
+              <input type="radio" name="projectType" value="detached"> Detached dwelling unit
+            </label>
+            <label class="radio-option" onclick="selectRadio('projectType','addition',this)">
+              <input type="radio" name="projectType" value="addition"> Addition to an existing building
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="card-header"><div class="card-title">Building Details</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Age of building</label>
+            <div class="radio-group" id="buildingAgeGroup">
+              <label class="radio-option" onclick="selectRadio('buildingAge','new',this)">
+                <input type="radio" name="buildingAge" value="new"> 5 years old or less
+              </label>
+              <label class="radio-option" onclick="selectRadio('buildingAge','existing',this)">
+                <input type="radio" name="buildingAge" value="existing"> More than 5 years old
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Existing dwelling units</label>
+            <div class="radio-row" id="existingUnitsGroup">
+              <label class="radio-option" onclick="selectRadio('existingUnits','1',this)">
+                <input type="radio" name="existingUnits" value="1"> 1
+              </label>
+              <label class="radio-option" onclick="selectRadio('existingUnits','2',this)">
+                <input type="radio" name="existingUnits" value="2"> 2
+              </label>
+              <label class="radio-option" onclick="selectRadio('existingUnits','3',this)">
+                <input type="radio" name="existingUnits" value="3"> 3
+              </label>
+            </div>
+            <div class="helper-text">How many dwelling units exist before the project</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Proposed dwelling units</label>
+            <div class="radio-row" id="proposedUnitsGroup">
+              <label class="radio-option" onclick="selectRadio('proposedUnits','1',this)">
+                <input type="radio" name="proposedUnits" value="1"> 1
+              </label>
+              <label class="radio-option" onclick="selectRadio('proposedUnits','2',this)">
+                <input type="radio" name="proposedUnits" value="2"> 2
+              </label>
+              <label class="radio-option" onclick="selectRadio('proposedUnits','3',this)">
+                <input type="radio" name="proposedUnits" value="3"> 3
+              </label>
+            </div>
+            <div class="helper-text">Total dwelling units after the project</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Number of bedrooms in ADU</label>
+            <select id="bedrooms">
+              <option value="">Select...</option>
+              <option value="1">1 bedroom</option>
+              <option value="2">2 bedrooms</option>
+              <option value="3">3 bedrooms</option>
+              <option value="4">4 bedrooms</option>
+              <option value="5+">5 or more bedrooms</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="card-header"><div class="card-title">Unit Characteristics</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Does the unit have its own separate entrance?</label>
+            <div class="radio-row" id="separateEntranceGroup">
+              <label class="radio-option" onclick="selectRadio('separateEntrance','yes',this)">
+                <input type="radio" name="separateEntrance" value="yes"> Yes
+              </label>
+              <label class="radio-option" onclick="selectRadio('separateEntrance','no',this)">
+                <input type="radio" name="separateEntrance" value="no"> No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Does it have a walkout basement?</label>
+            <div class="radio-row" id="walkoutGroup">
+              <label class="radio-option" onclick="selectRadio('walkout','yes',this)">
+                <input type="radio" name="walkout" value="yes"> Yes
+              </label>
+              <label class="radio-option" onclick="selectRadio('walkout','no',this)">
+                <input type="radio" name="walkout" value="no"> No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Entrance type</label>
+            <div class="radio-group" id="entranceTypeGroup">
+              <label class="radio-option" onclick="selectRadio('entranceType','direct',this)">
+                <input type="radio" name="entranceType" value="direct"> Direct to exterior
+              </label>
+              <label class="radio-option" onclick="selectRadio('entranceType','interior',this)">
+                <input type="radio" name="entranceType" value="interior"> Through interior common space
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-primary btn-lg" onclick="goToChecklist()">
+        Continue to Checklist →
+      </button>
+      <span class="helper-text">All fields are optional — answer what you know.</span>
+    </div>
+  </div>
+
+  <!-- ================= STEP 2: CHECKLIST ================= -->
+  <div id="step2" style="display:none;">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h1 class="page-title">Review Checklist</h1>
+        <p class="page-subtitle">Tick the canned comments that apply. Override the wording if you need a project-specific variation.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-secondary btn-sm" onclick="goToStep(1)">← Edit Setup</button>
+      </div>
+    </div>
+
+    <div id="projectBarEl" class="project-bar"></div>
+
+    <div class="card">
+      <div class="checklist-toolbar">
+        <div class="tabs">
+          <button class="tab active" id="tabCategory" onclick="setViewMode('category')">By Category</button>
+          <button class="tab" id="tabReference" onclick="setViewMode('reference')">By OBC Reference</button>
+        </div>
+        <div class="toolbar-spacer"></div>
+        <select id="severityFilter" onchange="renderChecklist()" style="width:auto; padding:7px 32px 7px 10px; font-size:13px;">
+          <option value="">All severities</option>
+          <option value="Major">Major only</option>
+          <option value="Minor">Minor only</option>
+          <option value="Info">Info only</option>
+          <option value="Coordination">Coordination only</option>
+        </select>
+        <button class="btn btn-sm btn-secondary" onclick="expandAll()">Expand all</button>
+        <button class="btn btn-sm btn-secondary" onclick="collapseAll()">Collapse all</button>
+      </div>
+      <div id="checklistContent"></div>
+    </div>
+
+    <div class="fixed-footer">
+      <span id="selectedCountDisplay" style="font-size:14px; color:var(--gray-600); font-weight:500;">0 comments selected</span>
+      <button class="btn btn-primary" onclick="goToOutput()">Generate Output →</button>
+    </div>
+  </div>
+
+  <!-- ================= STEP 3: OUTPUT ================= -->
+  <div id="step3" style="display:none;">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h1 class="page-title">Formatted Output</h1>
+        <p class="page-subtitle">Copy the list straight into your permit portal, or download a Word document.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-secondary btn-sm" onclick="goToStep(2)">← Back to Checklist</button>
+      </div>
+    </div>
+
+    <div id="outputProjectBar" class="project-bar"></div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div class="card-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <div class="card-title" id="outputTitle">Selected Comments</div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-secondary btn-sm" onclick="copyOutput()">📋 Copy All</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadDoc()">⬇ Download Word Doc</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="outputEmpty" class="empty-state" style="display:none;">
+          <div class="empty-state-icon">📋</div>
+          <div class="empty-state-title">No comments selected</div>
+          <p style="font-size:13px;">Go back to the checklist and tick the items applicable to this project.</p>
+          <br>
+          <button class="btn btn-primary" onclick="goToStep(2)">Go to Checklist</button>
+        </div>
+        <div id="outputList" class="output-list"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Plain Text · ready to paste</div>
+      </div>
+      <div class="card-body">
+        <div class="copy-area" id="copyArea"></div>
+        <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ============================================================
+// DATA — sourced from ADU_Interactive_Canned_Comments_Checklist_v2.xlsx
+// ============================================================
+const CHECKLIST_DATA = [
+  { id:1,  severity:'Info',         category:'General / Code Path',           appliesTo:'All',                        ref:'Div A 1.3.3.3B.',              comment:'Clarify age of building. Buildings less than 5 years old shall comply with Part 9 requirements.', sortKey:1001 },
+  { id:2,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.31.4.1.',                    comment:'Provide a complete additional dwelling unit including kitchen sink, lavatory, bathtub or shower, and water closet.', sortKey:2011 },
+  { id:3,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.31.4.1A.',                   comment:'Provide laundry facilities for the dwelling unit (individual or shared).', sortKey:2012 },
+  { id:4,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.5.',                         comment:'Room sizes shall comply with minimum area requirements. Revise plans accordingly.', sortKey:2001 },
+  { id:5,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.5.3.1.(2)',                  comment:'Minimum ceiling height in the secondary suite shall be 1.95 m. Revise plans where deficient.', sortKey:2002 },
+  { id:6,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.5.4.1.',                     comment:'Provide minimum hallway width of 860 mm.', sortKey:2003 },
+  { id:7,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'TABLE 9.5.5.',                 comment:'Doorways shall meet minimum width requirements. Provide 810 mm clear width where required.', sortKey:2004 },
+  { id:8,  severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.7.2.3.',                     comment:'Provide minimum glazing area of 5% in bedrooms and 10% in living / dining areas. Revise plans.', sortKey:2005 },
+  { id:9,  severity:'Major',        category:'Egress / Openings',             appliesTo:'All',                        ref:'9.9.6.',                       comment:'Doors in a means of egress shall comply with applicable swing, width, and operability requirements. Revise as required.', sortKey:3001 },
+  { id:10, severity:'Major',        category:'Egress / Openings',             appliesTo:'All',                        ref:'9.9.9.',                       comment:'Provide a compliant means of egress from each dwelling unit.', sortKey:3002 },
+  { id:11, severity:'Major',        category:'Egress / Openings',             appliesTo:'Secondary Suite / Basement', ref:'9.9.10.1.',                    comment:'Provide a compliant second means of egress window where required, including minimum openable area and dimensions.', sortKey:3003 },
+  { id:12, severity:'Major',        category:'Egress / Openings',             appliesTo:'Secondary Suite / Basement', ref:'9.9.10.1.(3)-(6)',             comment:'Provide a window well with minimum 550 mm clearance where required for egress windows.', sortKey:3004 },
+  { id:13, severity:'Major',        category:'Egress / Openings',             appliesTo:'Secondary Suite / Basement', ref:'9.12.2.2.',                    comment:'Provide frost protection for window well foundations where applicable.', sortKey:3005 },
+  { id:14, severity:'Major',        category:'Egress / Openings',             appliesTo:'Secondary Suite / Basement', ref:'9.14.6.3.',                    comment:'Provide drainage for window wells to the footing drain or other approved location.', sortKey:3006 },
+  { id:15, severity:'Major',        category:'Egress / Openings',             appliesTo:'All',                        ref:'9.15.4.3.',                    comment:'Provide lateral support for foundation walls where openings exceed 1.2 m, including stairs or other openings.', sortKey:3007 },
+  { id:16, severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.10.22.2.',                   comment:'Provide required clearance above cooktops: 750 mm to combustible construction or 600 mm to non-combustible construction.', sortKey:2007 },
+  { id:17, severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.10.22.3.',                   comment:'Provide minimum 450 mm clearance between cooktop and adjacent combustible cabinetry or surfaces.', sortKey:2008 },
+  { id:18, severity:'Major',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.10.15.',                     comment:'Unprotected openings shall comply with spatial separation requirements. Provide compliance information on the plans.', sortKey:2006 },
+  { id:19, severity:'Major',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.14.5.2. & 9.25.3.3.(7)',     comment:'Provide a sealed, child-resistant sump pit cover with soil gas control where required.', sortKey:2009 },
+  { id:20, severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.23.12.3.',                   comment:'Provide lintel sizing and support details for all new or altered openings.', sortKey:2010 },
+  { id:21, severity:'Minor',        category:'Building Code Requirements',    appliesTo:'All',                        ref:'9.34.2.',                      comment:'Provide lighting and electrical installation details as required.', sortKey:2013 },
+  { id:22, severity:'Major',        category:'Stairs / Guards / Handrails',   appliesTo:'All',                        ref:'9.8.1. to 9.8.4.',             comment:'Stairs shall comply with minimum width, rise, run, and tread dimension requirements. Revise plans.', sortKey:4001 },
+  { id:23, severity:'Major',        category:'Stairs / Guards / Handrails',   appliesTo:'All',                        ref:'9.8.2.2.',                     comment:'Provide minimum stair headroom of 1950 mm.', sortKey:4002 },
+  { id:24, severity:'Minor',        category:'Stairs / Guards / Handrails',   appliesTo:'All',                        ref:'9.8.6.2.',                     comment:'Provide landings at the top and bottom of stairs as required.', sortKey:4003 },
+  { id:25, severity:'Minor',        category:'Stairs / Guards / Handrails',   appliesTo:'All',                        ref:'9.8.7.4.',                     comment:'Provide handrails between 865 mm and 1070 mm above the nosing line.', sortKey:4004 },
+  { id:26, severity:'Major',        category:'Stairs / Guards / Handrails',   appliesTo:'All',                        ref:'9.8.8.3.',                     comment:'Provide guards with minimum height of 900 mm within dwellings and 1070 mm at landings, as applicable.', sortKey:4005 },
+  { id:27, severity:'Minor',        category:'Walkout / Site / Structure',    appliesTo:'Walkout Basement',           ref:'9.12.2.2.',                    comment:'Provide frost protection for footings serving walkout basement construction.', sortKey:5004 },
+  { id:28, severity:'Major',        category:'Walkout / Site / Structure',    appliesTo:'Walkout Basement',           ref:'9.8.8.2.',                     comment:'Provide guard details designed to resist required loads. Submit engineering where applicable.', sortKey:5002 },
+  { id:29, severity:'Major',        category:'Walkout / Site / Structure',    appliesTo:'Walkout Basement',           ref:'9.8.8.3.(1) & (3)',            comment:'Provide exterior guards with minimum height of 1070 mm where the difference in elevation exceeds 1.8 m, or 900 mm where otherwise permitted.', sortKey:5003 },
+  { id:30, severity:'Minor',        category:'Walkout / Site / Structure',    appliesTo:'Walkout Basement',           ref:'5.7.1.1.(1)',                  comment:'Provide a floor drain or catch basin where required.', sortKey:5001 },
+  { id:31, severity:'Major',        category:'Walkout / Site / Structure',    appliesTo:'Walkout Basement',           ref:'9.15.',                        comment:'Provide engineered retaining wall design or foundation details, as applicable.', sortKey:5005 },
+  { id:32, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.8.10.(1)(b) & 9.10.9.1.', comment:'Provide a continuous smoke-tight barrier between dwelling units.', sortKey:6002 },
+  { id:33, severity:'Coordination', category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.9.4.(2)',                 comment:'Clarify how the required separation is being provided on the plans, including any code permissions relied upon.', sortKey:6005 },
+  { id:34, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.8.3.(2) & 9.10.9.16.(4)', comment:'Provide protection for loadbearing elements using not less than 15.9 mm Type X gypsum board where required.', sortKey:6001 },
+  { id:35, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.9.2.(5) & (6)',           comment:'The smoke-tight barrier shall be continuous and sealed at all joints, junctions, and penetrations. Revise details accordingly.', sortKey:6003 },
+  { id:36, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.9.3.(2)',                 comment:'Provide self-closing devices on doors in required fire separations.', sortKey:6004 },
+  { id:37, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.9.7.(4)',                 comment:'Verify combustible drain, waste, and vent piping is installed only where permitted by code. Revise details as required.', sortKey:6006 },
+  { id:38, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.19.',                     comment:'Provide hardwired, interconnected smoke alarms with visual signal and battery backup in each bedroom and in the corridor or hallway serving bedrooms.', sortKey:6007 },
+  { id:39, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.10.20.1.',                   comment:'Provide fire fighter access to upper storeys as required.', sortKey:6008 },
+  { id:40, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.32.3.9A.',                   comment:'Provide hardwired, interconnected carbon monoxide alarms as required.', sortKey:6010 },
+  { id:41, severity:'Major',        category:'Fire / Life Safety / Sound',    appliesTo:'All',                        ref:'9.11.2.1.',                    comment:'Provide sound control with a minimum STC rating of 50 between dwelling units.', sortKey:6009 },
+  { id:42, severity:'Major',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.33.1.1.(1)',                 comment:'Heating systems shall serve only one dwelling unit. Revise mechanical design accordingly.', sortKey:7007 },
+  { id:43, severity:'Major',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.33.1.1.(3)',                 comment:'Air duct distribution systems serving one of the dwelling units shall not be directly interconnected with other parts of the house.', sortKey:7008 },
+  { id:44, severity:'Major',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.10.10.4.(2)(b)',             comment:'Fuel-fired appliances shall be located in a service room protected by a continuous smoke-tight barrier.', sortKey:7001 },
+  { id:45, severity:'Minor',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.32.3.3.',                    comment:'Provide mechanical ventilation design for dwelling units with 4 or fewer bedrooms.', sortKey:7005 },
+  { id:46, severity:'Minor',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.32.3.1.(1)(a)',              comment:'Provide mechanical ventilation design for dwelling units with 5 or more bedrooms.', sortKey:7004 },
+  { id:47, severity:'Minor',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.32.2.',                      comment:'Provide natural ventilation in all habitable rooms as required.', sortKey:7003 },
+  { id:48, severity:'Minor',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.32.3.7.(1)',                 comment:'Provide kitchen exhaust ducted to the exterior using non-combustible material.', sortKey:7006 },
+  { id:49, severity:'Minor',        category:'Mechanical / Ventilation / HVAC', appliesTo:'All',                      ref:'9.32.1.3.',                    comment:'Provide dryer exhaust ducted to the exterior using non-combustible material.', sortKey:7002 },
+];
+
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  step: 1,
+  setup: {
+    projName: '', projPermit: '', projExaminer: '', projDate: '',
+    projectType: '', buildingAge: '',
+    existingUnits: '', proposedUnits: '',
+    separateEntrance: '', walkout: '', entranceType: '',
+    bedrooms: '',
+  },
+  selections: {},
+  viewMode: 'category',
+  openSections: new Set(),
+};
+
+let currentGroupKeys = [];
+CHECKLIST_DATA.forEach(item => {
+  state.selections[item.id] = { checked: false, override: '' };
+});
+
+// ============================================================
+// SUGGESTION LOGIC
+// ============================================================
+function isSuggested(item) {
+  const s = state.setup;
+  if (item.appliesTo === 'Walkout Basement' && s.walkout === 'yes') return true;
+  if (item.appliesTo === 'Secondary Suite / Basement' && s.projectType === 'basement') return true;
+  if (item.ref === 'Div A 1.3.3.3B.' && s.buildingAge) return true;
+  // Bedroom-driven mechanical ventilation
+  if (s.bedrooms) {
+    const bedNum = s.bedrooms === '5+' ? 5 : parseInt(s.bedrooms);
+    if (item.ref === '9.32.3.3.' && bedNum <= 4) return true;
+    if (item.ref === '9.32.3.1.(1)(a)' && bedNum >= 5) return true;
+  }
+  // Multi-unit: sound and separations
+  if (s.proposedUnits && parseInt(s.proposedUnits) >= 2) {
+    if (item.ref === '9.11.2.1.') return true;
+    if (item.ref === '9.10.8.10.(1)(b) & 9.10.9.1.') return true;
+  }
+  return false;
+}
+
+function isDimmed(item) {
+  const s = state.setup;
+  if (item.appliesTo === 'Walkout Basement' && s.walkout === 'no') return true;
+  if (item.appliesTo === 'Secondary Suite / Basement' && s.projectType && s.projectType !== 'basement') return true;
+  return false;
+}
+
+function getSuggestionReason(item) {
+  const s = state.setup;
+  if (item.appliesTo === 'Walkout Basement' && s.walkout === 'yes') return 'Walkout basement';
+  if (item.appliesTo === 'Secondary Suite / Basement' && s.projectType === 'basement') return 'Basement apartment';
+  if (item.ref === 'Div A 1.3.3.3B.' && s.buildingAge) return 'Building age';
+  if (s.bedrooms) {
+    const bedNum = s.bedrooms === '5+' ? 5 : parseInt(s.bedrooms);
+    if (item.ref === '9.32.3.3.' && bedNum <= 4) return `${s.bedrooms} bedroom${bedNum>1?'s':''}`;
+    if (item.ref === '9.32.3.1.(1)(a)' && bedNum >= 5) return `${s.bedrooms} bedrooms`;
+  }
+  if (s.proposedUnits && parseInt(s.proposedUnits) >= 2) {
+    if (item.ref === '9.11.2.1.' || item.ref === '9.10.8.10.(1)(b) & 9.10.9.1.') return 'Multi-unit';
+  }
+  return null;
+}
+
+function getSelectedItems() {
+  return CHECKLIST_DATA
+    .filter(item => state.selections[item.id]?.checked)
+    .sort((a, b) => a.sortKey - b.sortKey);
+}
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function goToStep(step) {
+  // Save in-flight values
+  if (state.step === 1) saveSetupFields();
+  if (state.step === 2) saveOverridesFromDOM();
+
+  state.step = step;
+  document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+  document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+  document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+
+  document.querySelectorAll('.step').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active', 'done');
+    if (s === step) el.classList.add('active');
+    else if (s < step) el.classList.add('done');
+  });
+
+  if (step === 2) renderChecklist();
+  if (step === 3) renderOutput();
+
+  window.scrollTo(0, 0);
+}
+
+function saveSetupFields() {
+  state.setup.projName = document.getElementById('projName').value;
+  state.setup.projPermit = document.getElementById('projPermit').value;
+  state.setup.projExaminer = document.getElementById('projExaminer').value;
+  state.setup.projDate = document.getElementById('projDate').value;
+  state.setup.bedrooms = document.getElementById('bedrooms').value;
+}
+
+function saveOverridesFromDOM() {
+  document.querySelectorAll('.override-input').forEach(el => {
+    const id = parseInt(el.dataset.id);
+    if (state.selections[id]) state.selections[id].override = el.value;
+  });
+}
+
+function goToChecklist() {
+  saveSetupFields();
+  // Auto-open relevant sections
+  state.openSections = new Set(['General / Code Path', 'Egress / Openings']);
+  if (state.setup.projectType === 'basement') {
+    state.openSections.add('Building Code Requirements');
+    state.openSections.add('Fire / Life Safety / Sound');
+  }
+  if (state.setup.walkout === 'yes') {
+    state.openSections.add('Walkout / Site / Structure');
+  }
+  goToStep(2);
+}
+
+function goToOutput() {
+  saveOverridesFromDOM();
+  goToStep(3);
+}
+
+// ============================================================
+// FORM HELPERS
+// ============================================================
+function selectRadio(field, value, labelEl) {
+  state.setup[field] = value;
+  const group = document.getElementById(field + 'Group');
+  if (group) {
+    group.querySelectorAll('.radio-option').forEach(el => el.classList.remove('selected'));
+    labelEl.classList.add('selected');
+  }
+}
+
+// ============================================================
+// CHECKLIST RENDERING
+// ============================================================
+function setViewMode(mode) {
+  saveOverridesFromDOM();
+  state.viewMode = mode;
+  document.getElementById('tabCategory').classList.toggle('active', mode === 'category');
+  document.getElementById('tabReference').classList.toggle('active', mode === 'reference');
+  state.openSections = new Set();
+  renderChecklist();
+}
+
+function expandAll() {
+  saveOverridesFromDOM();
+  const groups = getGroupedItems();
+  Object.keys(groups).forEach(k => state.openSections.add(k));
+  renderChecklist();
+}
+
+function collapseAll() {
+  saveOverridesFromDOM();
+  state.openSections.clear();
+  renderChecklist();
+}
+
+function toggleSection(idx) {
+  saveOverridesFromDOM();
+  const key = currentGroupKeys[idx];
+  if (state.openSections.has(key)) state.openSections.delete(key);
+  else state.openSections.add(key);
+  renderChecklist();
+}
+
+function getRefGroupKey(ref) {
+  if (ref.startsWith('Div')) return 'Division A';
+  let stripped = ref.replace(/^TABLE\s+/i, '');
+  const match = stripped.match(/^(\d+)\.(\d+)/);
+  if (match) return `Section ${match[1]}.${match[2]}`;
+  return 'Other';
+}
+
+function getGroupedItems() {
+  const severityFilter = document.getElementById('severityFilter')?.value || '';
+  let items = CHECKLIST_DATA.filter(item => {
+    if (severityFilter && item.severity !== severityFilter) return false;
+    return true;
+  });
+
+  const groups = {};
+  if (state.viewMode === 'category') {
+    items.forEach(item => {
+      if (!groups[item.category]) groups[item.category] = [];
+      groups[item.category].push(item);
+    });
+  } else {
+    items.forEach(item => {
+      const k = getRefGroupKey(item.ref);
+      if (!groups[k]) groups[k] = [];
+      groups[k].push(item);
+    });
+  }
+
+  // Sort items inside groups: suggested first, then by sortKey
+  Object.keys(groups).forEach(k => {
+    groups[k].sort((a, b) => {
+      const sa = isSuggested(a) ? 0 : 1;
+      const sb = isSuggested(b) ? 0 : 1;
+      if (sa !== sb) return sa - sb;
+      return a.sortKey - b.sortKey;
+    });
+  });
+
+  return groups;
+}
+
+function getSortedGroupKeys(groups) {
+  const keys = Object.keys(groups);
+  if (state.viewMode === 'category') {
+    // Predefined category order
+    const order = [
+      'General / Code Path',
+      'Building Code Requirements',
+      'Egress / Openings',
+      'Stairs / Guards / Handrails',
+      'Walkout / Site / Structure',
+      'Fire / Life Safety / Sound',
+      'Mechanical / Ventilation / HVAC',
+    ];
+    return keys.sort((a, b) => {
+      const ia = order.indexOf(a);
+      const ib = order.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
+  } else {
+    return keys.sort((a, b) => {
+      if (a === 'Division A') return -1;
+      if (b === 'Division A') return 1;
+      const na = parseFloat(a.replace('Section ', '')) || 999;
+      const nb = parseFloat(b.replace('Section ', '')) || 999;
+      return na - nb;
+    });
+  }
+}
+
+function renderChecklist() {
+  renderProjectBar('projectBarEl');
+
+  const groups = getGroupedItems();
+  currentGroupKeys = getSortedGroupKeys(groups);
+  const container = document.getElementById('checklistContent');
+
+  const totalSuggested = CHECKLIST_DATA.filter(isSuggested).length;
+
+  let html = '';
+  if (totalSuggested > 0) {
+    html += `<div class="suggested-notice">
+      <span style="font-size:14px;">★</span>
+      <span><strong>${totalSuggested} highlighted items</strong> are suggested based on your project setup — review these first.</span>
+    </div>`;
+  }
+
+  currentGroupKeys.forEach((groupKey, idx) => {
+    const items = groups[groupKey];
+    const isOpen = state.openSections.has(groupKey);
+    const selectedInGroup = items.filter(i => state.selections[i.id]?.checked).length;
+    const suggestedInGroup = items.filter(isSuggested).length;
+
+    html += `<div class="section">
+      <div class="section-header" onclick="toggleSection(${idx})">
+        <span class="section-chevron ${isOpen ? 'open' : ''}">▶</span>
+        <span class="section-name">${escapeHtml(groupKey)}</span>
+        ${suggestedInGroup > 0 ? `<span class="badge badge-suggested">★ ${suggestedInGroup} suggested</span>` : ''}
+        ${selectedInGroup > 0 ? `<span class="section-selected-count">${selectedInGroup} selected</span>` : ''}
+        <span class="section-count">${items.length} items</span>
+      </div>
+      <div class="section-body ${isOpen ? 'open' : ''}">`;
+
+    items.forEach(item => {
+      const sel = state.selections[item.id];
+      const suggested = isSuggested(item);
+      const dimmed = isDimmed(item);
+      const reason = getSuggestionReason(item);
+
+      html += `<div class="checklist-item ${suggested ? 'suggested' : ''} ${dimmed ? 'dimmed' : ''}">
+        <input type="checkbox" class="item-checkbox"
+          id="cb_${item.id}"
+          ${sel.checked ? 'checked' : ''}
+          onchange="toggleItem(${item.id}, this.checked)">
+        <div class="item-content">
+          <div class="item-meta">
+            <span class="item-ref">${escapeHtml(item.ref)}</span>
+            <span class="badge badge-${item.severity.toLowerCase()}">${item.severity}</span>
+            ${suggested && reason ? `<span class="badge badge-suggested">★ ${escapeHtml(reason)}</span>` : ''}
+            ${item.appliesTo !== 'All' ? `<span class="applies-tag">— ${escapeHtml(item.appliesTo)}</span>` : ''}
+          </div>
+          <div class="item-comment">${escapeHtml(item.comment)}</div>
+          <div class="item-override">
+            <div class="item-override-label">Override comment (leave blank to use the standard wording)</div>
+            <textarea class="override-input" data-id="${item.id}"
+              placeholder="Type a project-specific comment to replace the standard one..."
+              onchange="updateOverride(${item.id}, this.value)">${escapeHtml(sel.override || '')}</textarea>
+          </div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+  updateSelectedCountDisplay();
+}
+
+function toggleItem(id, checked) {
+  state.selections[id].checked = checked;
+  updateSectionCount(id);
+  updateSelectedCountDisplay();
+}
+
+function updateOverride(id, value) {
+  state.selections[id].override = value;
+}
+
+function updateSelectedCountDisplay() {
+  const n = getSelectedItems().length;
+  const el = document.getElementById('selectedCountDisplay');
+  if (el) el.textContent = n === 0 ? '0 comments selected' : `${n} comment${n !== 1 ? 's' : ''} selected`;
+}
+
+function updateSectionCount(changedId) {
+  // Find the parent section header for this checkbox and update the selected count badge
+  const item = CHECKLIST_DATA.find(i => i.id === changedId);
+  if (!item) return;
+  const groupKey = state.viewMode === 'category' ? item.category : getRefGroupKey(item.ref);
+  const groups = getGroupedItems();
+  const groupItems = groups[groupKey] || [];
+  const selected = groupItems.filter(i => state.selections[i.id]?.checked).length;
+
+  const idx = currentGroupKeys.indexOf(groupKey);
+  if (idx === -1) return;
+  const headers = document.querySelectorAll('.section-header');
+  const header = headers[idx];
+  if (!header) return;
+
+  let badge = header.querySelector('.section-selected-count');
+  if (selected > 0) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'section-selected-count';
+      const countEl = header.querySelector('.section-count');
+      header.insertBefore(badge, countEl);
+    }
+    badge.textContent = `${selected} selected`;
+  } else if (badge) {
+    badge.remove();
+  }
+}
+
+// ============================================================
+// OUTPUT
+// ============================================================
+function renderOutput() {
+  const selected = getSelectedItems();
+  renderProjectBar('outputProjectBar');
+
+  const titleEl = document.getElementById('outputTitle');
+  if (titleEl) titleEl.textContent = `Selected Comments (${selected.length})`;
+
+  const listEl = document.getElementById('outputList');
+  const emptyEl = document.getElementById('outputEmpty');
+  const copyArea = document.getElementById('copyArea');
+
+  if (selected.length === 0) {
+    listEl.innerHTML = '';
+    emptyEl.style.display = 'block';
+    copyArea.textContent = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  let listHtml = '';
+  let plainText = '';
+  const s = state.setup;
+  if (s.projName || s.projPermit || s.projExaminer || s.projDate) {
+    if (s.projName)     plainText += `Project: ${s.projName}\n`;
+    if (s.projPermit)   plainText += `Permit: ${s.projPermit}\n`;
+    if (s.projExaminer) plainText += `Plans Examiner: ${s.projExaminer}\n`;
+    if (s.projDate)     plainText += `Review Date: ${s.projDate}\n`;
+    plainText += '\n';
+  }
+
+  selected.forEach((item, i) => {
+    const num = i + 1;
+    const override = state.selections[item.id]?.override?.trim();
+    const comment = override || item.comment;
+    const formatted = `Per OBC 2024 ${item.ref} - ${comment}`;
+    const customTag = override ? ' <em style="color:var(--primary);font-size:11px;font-style:normal;background:var(--primary-light);padding:1px 6px;border-radius:4px;">custom</em>' : '';
+
+    listHtml += `<div class="output-item">
+      <div class="output-num">${num}.</div>
+      <div class="output-text">${escapeHtml(formatted)}${customTag}</div>
+    </div>`;
+    plainText += `${num}. ${formatted}\n`;
+  });
+
+  listEl.innerHTML = listHtml;
+  copyArea.textContent = plainText.trim();
+}
+
+function renderProjectBar(elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const s = state.setup;
+  const typeLabels = { basement: 'Basement Apartment', detached: 'Detached Dwelling Unit', addition: 'Addition' };
+  const ageLabels = { new: '≤ 5 years', existing: '> 5 years' };
+
+  const items = [];
+  if (s.projName) items.push({ label: 'Project', value: s.projName });
+  if (s.projPermit) items.push({ label: 'Permit', value: s.projPermit });
+  if (s.projExaminer) items.push({ label: 'Examiner', value: s.projExaminer });
+  if (s.projDate) items.push({ label: 'Date', value: s.projDate });
+  if (s.projectType) items.push({ label: 'Type', value: typeLabels[s.projectType] });
+  if (s.buildingAge) items.push({ label: 'Building Age', value: ageLabels[s.buildingAge] });
+  if (s.proposedUnits) items.push({ label: 'Units (Existing → Proposed)', value: `${s.existingUnits || '?'} → ${s.proposedUnits}` });
+  if (s.walkout) items.push({ label: 'Walkout', value: s.walkout === 'yes' ? 'Yes' : 'No' });
+  if (s.bedrooms) items.push({ label: 'Bedrooms', value: s.bedrooms });
+
+  if (items.length === 0) { el.style.display = 'none'; return; }
+  el.style.display = 'flex';
+  el.innerHTML = items.map(i => `
+    <div class="project-bar-item">
+      <div class="project-bar-label">${escapeHtml(i.label)}</div>
+      <div class="project-bar-value">${escapeHtml(i.value)}</div>
+    </div>`).join('');
+}
+
+// ============================================================
+// COPY & DOWNLOAD
+// ============================================================
+function copyOutput() {
+  const text = document.getElementById('copyArea').textContent;
+  if (!text.trim()) {
+    showToast('No comments selected yet.');
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => showToast('✓ Copied to clipboard'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('✓ Copied to clipboard'); }
+    catch (e) { showToast('Copy failed — please select and copy manually.'); }
+    document.body.removeChild(ta);
+  }
+}
+
+function escRtf(str) {
+  return String(str || '')
+    .replace(/\\/g, '\\\\')
+    .replace(/\{/g, '\\{')
+    .replace(/\}/g, '\\}')
+    .replace(/\n/g, '\\par ')
+    .replace(/[\u0080-\uFFFF]/g, c => `\\u${c.charCodeAt(0)}?`);
+}
+
+function downloadDoc() {
+  const selected = getSelectedItems();
+  if (selected.length === 0) { showToast('No comments selected.'); return; }
+  const s = state.setup;
+  const typeLabels = { basement: 'Basement Apartment', detached: 'Detached Dwelling Unit', addition: 'Addition to Existing Building' };
+
+  let rtf = '{\\rtf1\\ansi\\ansicpg1252\\deff0\\nouicompat';
+  rtf += '{\\fonttbl{\\f0\\fnil\\fcharset0 Calibri;}}';
+  rtf += '{\\colortbl ;\\red37\\green99\\blue235;\\red107\\green114\\blue128;}';
+  rtf += '\\viewkind4\\uc1\\pard\\sa120\\f0\\fs22 ';
+
+  // Title
+  rtf += '\\fs32\\b ADU Plan Review \\u8212? Comment List\\b0\\fs22\\par ';
+
+  // Project info block
+  if (s.projName)     rtf += `\\b Project: \\b0 ${escRtf(s.projName)}\\par `;
+  if (s.projPermit)   rtf += `\\b Permit Number: \\b0 ${escRtf(s.projPermit)}\\par `;
+  if (s.projExaminer) rtf += `\\b Plans Examiner: \\b0 ${escRtf(s.projExaminer)}\\par `;
+  if (s.projDate)     rtf += `\\b Review Date: \\b0 ${escRtf(s.projDate)}\\par `;
+  if (s.projectType)  rtf += `\\b Project Type: \\b0 ${escRtf(typeLabels[s.projectType] || s.projectType)}\\par `;
+  rtf += '\\par ';
+
+  // Section heading
+  rtf += `\\fs26\\b Plan Review Comments (${selected.length})\\b0\\fs22\\par\\par `;
+
+  // Numbered list
+  selected.forEach((item, i) => {
+    const num = i + 1;
+    const override = state.selections[item.id]?.override?.trim();
+    const comment = override || item.comment;
+    const line = `${num}. Per OBC 2024 ${item.ref} - ${comment}`;
+    rtf += `${escRtf(line)}\\par `;
+  });
+
+  rtf += '}';
+
+  const blob = new Blob([rtf], { type: 'application/rtf' });
+  const url = URL.createObjectURL(blob);
+  const safe = (s.projName || 'ADU_Plan_Review').replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  const filename = `${safe || 'ADU_Plan_Review'}_Comments.rtf`;
+
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('✓ Document downloaded');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+(function init() {
+  // Pre-fill today's date
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('projDate').value = dateStr;
+})();
+</script>
+</body>
+</html>
